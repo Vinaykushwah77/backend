@@ -1,6 +1,6 @@
 const User = require('../models/User');
 const jwt = require("jsonwebtoken");
-const cloudinary = require('../utils/cloudinary');
+const cloudinary = require('../utils/cloudinaryConfig');
 const fs = require('fs');
 
 // Generate JWT token 
