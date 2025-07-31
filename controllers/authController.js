@@ -33,7 +33,14 @@ exports.registerUser = async (req, res) => {
             profileImageUrl = result.secure_url;
 
             // Delete temp file from server
-            fs.unlinkSync(req.file.path);
+            if (req.file && req.file.path && !req.file.path.startsWith("http")) {
+                fs.unlink(req.file.path, (err) => {
+                    if (err) {
+                        console.error("Failed to delete temp file:", err.message);
+                    }
+                });
+            }
+
         }
 
         // Create the User
